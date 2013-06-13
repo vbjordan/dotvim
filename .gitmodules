@@ -1,27 +1,36 @@
 [submodule "bundle/snipmate"]
 	path = bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
+  ignore = untracked
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat.git
+  ignore = untracked
 [submodule "bundle/sqlutilities"]
 	path = bundle/sqlutilities
 	url = https://github.com/vim-scripts/SQLUtilities.git
+  ignore = untracked
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+  ignore = untracked
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+  ignore = untracked
 [submodule "bundle/ctrlp"]
 	path = bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
+  ignore = untracked
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
+  ignore = untracked
 [submodule "jellybeans.vim"]
 	path = jellybeans.vim
 	url = https://github.com/nanotech/jellybeans.vim.git
+  ignore = untracked
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+  ignore = untracked
