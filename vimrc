@@ -1,5 +1,6 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
+execute pathogen#helptags() 
 
 set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
 set encoding=utf-8
