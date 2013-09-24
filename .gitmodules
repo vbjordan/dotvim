@@ -40,3 +40,9 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "grep.vim"]
+	path = grep.vim
+	url = https://github.com/vim-scripts/grep.vim.git
+[submodule "bundle/grep.vim"]
+	path = bundle/grep.vim
+	url = https://github.com/vim-scripts/grep.vim.git
