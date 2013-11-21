@@ -199,7 +199,7 @@ nmap <C-h> :vertical res -1<CR>
 nmap <C-j> :res -1<CR>
 nmap ,m :resize<CR>
 nmap ,M :resize\|:vertical resize<CR>
-" nmap ,a :NERDTreeToggle<CR>
+nmap ,a :NERDTreeToggle<CR>
 nnoremap <silent> ,t :TlistToggle<CR>
 nmap ,s :<C-u>split scratch \| set nonumber foldcolumn=0 winfixheight<CR>
 " nmap <silent> ,p <Plug>ToggleProject
@@ -216,7 +216,7 @@ nnoremap <C-n> <C-w>j
 nnoremap <C-p> <C-w>k
 
 " NERDTree
-" let NERDChristmasTree=1
+let NERDChristmasTree=1
 
 " Project
 let g:proj_flags='T'
@@ -285,6 +285,13 @@ if &term == "xterm-256color" || &term == "screen"
   set background=dark
   set t_Co=256
   colorscheme jellybeans
+  "colorscheme solarized
+  "set background=dark
+endif
+
+if has('gui_running')
+  colorscheme pyte
+  set guifont=Inconsolata:h16
 endif
 
 syntax on                       "syn:   syntax highlighting
