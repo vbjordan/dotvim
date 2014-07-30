@@ -1,4 +1,6 @@
-call pathogen#infect()
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+execute pathogen#helptags() 
 
 set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
 set encoding=utf-8
@@ -284,9 +286,14 @@ if &term == "xterm-256color" || &term == "screen"
   set t_Co=256
   "colorscheme jellybeans
   colorscheme Tomorrow-Night
-  " colorscheme solarized
   " set t_Co=16
   " set background=light
+  "set background=dark
+endif
+
+if has('gui_running')
+  colorscheme pyte
+  set guifont=Inconsolata:h16
 endif
 
 syntax on                       "syn:   syntax highlighting
