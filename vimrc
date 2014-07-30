@@ -209,7 +209,7 @@ nmap <silent> ,w :bwipeout<CR>
 nmap <silent> ,u :bunload<CR>
 nmap <silent> ,o :only<CR>
 " vmap ,g :vimgrep /expand("<cword>")/j 
-map ,g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw
+" map ,g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw
 
 " jumping between buffers
 nnoremap <C-n> <C-w>j
@@ -282,10 +282,12 @@ let g:proj_window_increment=55
 
 if &term == "xterm-256color" || &term == "screen"
   " use 256 colors
-  set background=dark
+  "set background=dark
   set t_Co=256
-  colorscheme jellybeans
-  "colorscheme solarized
+  "colorscheme jellybeans
+  colorscheme Tomorrow-Night
+  " set t_Co=16
+  " set background=light
   "set background=dark
 endif
 
@@ -298,18 +300,6 @@ syntax on                       "syn:   syntax highlighting
 syn sync maxlines=500
 " load all my syntax options
 "source ~/.vim/syntax/mine.vim
-
-" set background=light
-" hi TooLong guibg=#ff0000 guifg=#f8f8f8
-" colorscheme ir_black
-" colorscheme rdark-terminal
-" colorscheme twilight256
-" colorscheme xoria256
-" colorscheme gardener
-" colorscheme grb256
-" colorscheme lucius
-" colorscheme wombat256
-
 
 " -----------------------------------------------------------------------------------------------}}}
 
@@ -391,6 +381,10 @@ nmap <silent> ,de :call Lcd('~/public_html/email')<CR>
 nmap <silent> ,dm :call Lcd('~/public_html/mobile')<CR>
 nmap <silent> ,dc :call Lcd('~/git/common')<CR>
 nmap <silent> ,db :call Lcd('~/public_html/backyard')<CR>
+nmap <silent> ,dt :call Lcd('~/public_html/toolia')<CR>
+nmap <silent> ,dl :call Lcd('~/git/leads')<CR>
+nmap <silent> ,dp :call Lcd('~/git/push-notification')<CR>
+nmap <silent> ,dd :call Lcd('~/git/db_handle')<CR>
 
 " -----------------------------------------------------------------------------------------------}}}
 
@@ -425,12 +419,13 @@ let g:ctrlp_open_new_file = 'h'
 let g:ctrlp_open_multiple_files = 'hr'
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_custom_ignore = { 'dir': '\v[\/](vendor)$', 'file': '', 'link': '', }
 
 map ,pd :CtrlPBookmarkDir<CR>
 
 " grep.vim
 let g:Grep_Default_Options = '-i'
-let g:Grep_Skip_Dirs = '.svn .git'
+let g:Grep_Skip_Dirs = '.svn .git tests'
 let g:Grep_Skip_Files = 'tags'
 
 imap <S-Tab> <Plug>delimitMateS-Tab
@@ -444,3 +439,13 @@ let g:checksyntax#okrx = ''
 
 " sqlutilities
 let g:sqlutil_keyword_case = '\U'
+
+set tags=./tags,~/git/common/tags
+
+" fugitive
+"
+nmap ,gd :Gdiff<CR>
+nmap ,gs :Gstatus<CR>
+
+"let g:Powerline_symbols = 'fancy'
+"let g:airline_powerline_fonts = 1
