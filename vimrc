@@ -190,7 +190,7 @@ noremap  <silent> ^ 0
 
 " switch tabs
 nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+"nnoremap <S-Tab> gT
 
 " quick window resize
 nmap <C-l> :vertical res +1<CR>
