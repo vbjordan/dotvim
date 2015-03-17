@@ -13,12 +13,20 @@ Plugin 'vim-scripts/grep.vim'
 Plugin 'vim-scripts/Align'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vbjordan/snipMate.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'vbjordan/snipMate.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
+
+Plugin 'mbbill/undotree'
+Plugin 'shougo/neocomplcache'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'spf13/vim-autoclose'
+Plugin 'spf13/PIV'
+Plugin 'godlygeek/tabular'
+Plugin 'Lokaltog/vim-easymotion'
 
 call vundle#end() 
 
