@@ -1,6 +1,26 @@
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-execute pathogen#helptags() 
+"runtime bundle/vim-pathogen/autoload/pathogen.vim
+"execute pathogen#infect()
+"execute pathogen#helptags() 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'vim-scripts/grep.vim'
+Plugin 'vim-scripts/Align'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vbjordan/snipMate.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Bundle 'rking/ag.vim'
+
+call vundle#end() 
 
 set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
 set encoding=utf-8
@@ -190,7 +210,7 @@ noremap  <silent> ^ 0
 
 " switch tabs
 nnoremap <Tab> gt
-"nnoremap <S-Tab> gT
+nnoremap <S-Tab> gT
 
 " quick window resize
 nmap <C-l> :vertical res +1<CR>
@@ -259,22 +279,6 @@ let g:showmarks_enable=0
 
 let g:proj_window_width=45
 let g:proj_window_increment=55
-
-" -----------------------------------------------------------------------------------------------}}}
-
-" Shell ---------------------------------------------------------------------------------------{{{
-
-" Conque stuff
-" nmap ,t :<C-u>ConqueTerm bash<CR>
-" nmap ,T :<C-u>ConqueTermSplit bash<CR>
-" let g:ConqueTerm_PromptRegex = '^\[\w\+@[0-9A-Za-z_.-]\+:[0-9A-Za-z_./\~,:-]\+\]\$'
-"let g:Conque_TERM = 'vt100'
-"let g:Conque_Tab_Timeout = 10
-"let g:ConqueTerm_ReadUnfocused = 1
-" let g:ConqueTerm_CloseOnEnd = 1
-" let g:ConqueTerm_SessionSupport = 1
-
-"redir >> /home/nraffo/.vim/echolog.log
 
 " -----------------------------------------------------------------------------------------------}}}
 
@@ -378,7 +382,7 @@ endfunction
 nmap <silent> ,dw :call Lcd('~/public_html/web')<CR>
 nmap <silent> ,ds :call Lcd('~/public_html/webservice')<CR>
 nmap <silent> ,de :call Lcd('~/public_html/email')<CR>
-nmap <silent> ,dm :call Lcd('~/public_html/mobile')<CR>
+nmap <silent> ,dm :call Lcd('~/public_html/api-service-messaging')<CR>
 nmap <silent> ,dc :call Lcd('~/git/common')<CR>
 nmap <silent> ,db :call Lcd('~/public_html/backyard')<CR>
 nmap <silent> ,dt :call Lcd('~/public_html/toolia')<CR>
@@ -425,13 +429,13 @@ map ,pd :CtrlPBookmarkDir<CR>
 
 " grep.vim
 let g:Grep_Default_Options = '-i'
-let g:Grep_Skip_Dirs = '.svn .git tests'
+let g:Grep_Skip_Dirs = '.svn .git vendor'
 let g:Grep_Skip_Files = 'tags'
 
 imap <S-Tab> <Plug>delimitMateS-Tab
 let delimitMate_expand_cr = 1
 " au FileType smarty let b:delimitMate_matchpairs = ""
-au FileType smarty let b:delimitMate_matchpairs = "%:%"
+"au FileType smarty let b:delimitMate_matchpairs = "%:%"
 " au FileType smarty let b:delimitMate_nesting_quotes = ['%%']
 
 " check php syntax
@@ -449,3 +453,8 @@ nmap ,gs :Gstatus<CR>
 
 "let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
+
+let g:syntastic_javascript_checkers = ['jshint']
+
+let g:agprg="/home/vjordan/bin/ag --column"
+"cmap ag Ag!
