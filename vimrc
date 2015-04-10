@@ -19,14 +19,15 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Bundle 'rking/ag.vim'
-
 Plugin 'mbbill/undotree'
 Plugin 'shougo/neocomplcache'
-Plugin 'Valloric/YouCompleteMe'
+""Plugin 'Valloric/YouCompleteMe'
 Plugin 'spf13/vim-autoclose'
 Plugin 'spf13/PIV'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'avakhov/vim-yaml'
+Plugin 'chriskempson/tomorrow-theme'
 
 call vundle#end() 
 
@@ -431,7 +432,7 @@ let g:ctrlp_open_new_file = 'h'
 let g:ctrlp_open_multiple_files = 'hr'
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_clear_cache_on_exit=0
-let g:ctrlp_custom_ignore = { 'dir': '\v[\/](vendor)$', 'file': '', 'link': '', }
+"let g:ctrlp_custom_ignore = { 'dir': '\v[\/](vendor)$', 'file': '', 'link': '', }
 
 map ,pd :CtrlPBookmarkDir<CR>
 
@@ -464,5 +465,5 @@ nmap ,gs :Gstatus<CR>
 
 let g:syntastic_javascript_checkers = ['jshint']
 
-let g:agprg="/home/vjordan/bin/ag --column"
+let g:agprg="/usr/local/bin/ag --column"
 "cmap ag Ag!
