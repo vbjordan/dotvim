@@ -1,6 +1,3 @@
-"runtime bundle/vim-pathogen/autoload/pathogen.vim
-"execute pathogen#infect()
-"execute pathogen#helptags() 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -9,25 +6,26 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'vim-scripts/grep.vim'
+"Plugin 'vim-scripts/grep.vim'
 Plugin 'vim-scripts/Align'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'vbjordan/snipMate.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Bundle 'rking/ag.vim'
+Plugin 'rking/ag.vim'
 Plugin 'mbbill/undotree'
-Plugin 'shougo/neocomplcache'
-""Plugin 'Valloric/YouCompleteMe'
-Plugin 'spf13/vim-autoclose'
-Plugin 'spf13/PIV'
-Plugin 'godlygeek/tabular'
-Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'spf13/vim-autoclose'
+"Plugin 'godlygeek/tabular'
+"Plugin 'Lokaltog/vim-easymotion'
 Plugin 'avakhov/vim-yaml'
 Plugin 'chriskempson/tomorrow-theme'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'docteurklein/php-getter-setter.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 call vundle#end() 
 
@@ -86,6 +84,7 @@ au FileType html set cindent     "cin:   enables the second-most configurable in
 au FileType smarty set smartindent     
 " au FileType php set cinoptions=l1,c4,(s,U1,w1,m1,j1
 au FileType php set cinwords=if,elif,else,for,while,try,except,finally,def,class
+au FileType php set omnifunc=phpcomplete#CompletePHP
 " set showmatch                   "sm:    flashes matching brackets or
 let loaded_matchparen = 1
 
@@ -453,7 +452,7 @@ let g:checksyntax#okrx = ''
 " sqlutilities
 let g:sqlutil_keyword_case = '\U'
 
-set tags=./tags,~/git/common/tags
+set tags=tags
 
 " fugitive
 "
@@ -467,3 +466,28 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 let g:agprg="/usr/local/bin/ag --column"
 "cmap ag Ag!
+
+" youcompleteme
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
+"let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
+"let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
+
+" ultisnips
+"let g:UltiSnipsExpandTrigger="<Tab>"
+"let g:UltiSnipsJumpForwardTrigger="<Tab>"                                           
+"let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
+
+let g:UltiSnipsExpandTrigger = "<nop>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+
+let g:UltiSnipsSnippetsDir=[$HOME."/.vim/UltiSnips"]

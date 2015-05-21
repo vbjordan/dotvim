@@ -1,0 +1,30 @@
+snippet dd "doctrine dump"
+\Doctrine\Common\Util\Debug::dump(${1});
+endsnippet
+
+snippet dde "doctrine dump exit"
+\Doctrine\Common\Util\Debug::dump(${1});
+exit;
+endsnippet 
+
+snippet el "error_log"
+error_log(${1});
+endsnippet
+
+snippet ev "error_log var_export"
+error_log(var_export(${1},true));
+endsnippet
+
+snippet vd "var_dump"
+var_dump(${1});
+endsnippet
+
+snippet vde "var_dump exit"
+var_dump(${1});
+exit;
+endsnippet
+
+snippet pe "print exit"
+print ${1};
+exit;
+endsnippet
