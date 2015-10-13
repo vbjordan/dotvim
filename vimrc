@@ -7,17 +7,14 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
 "Plugin 'vim-scripts/grep.vim'
-Plugin 'vim-scripts/Align'
+"Plugin 'vim-scripts/Align'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'rking/ag.vim'
-Plugin 'mbbill/undotree'
 "Plugin 'spf13/vim-autoclose'
-"Plugin 'godlygeek/tabular'
 "Plugin 'Lokaltog/vim-easymotion'
 Plugin 'avakhov/vim-yaml'
 Plugin 'chriskempson/tomorrow-theme'
@@ -26,14 +23,20 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'docteurklein/php-getter-setter.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'evidens/vim-twig'
+Plugin 'arnaud-lb/vim-php-namespace'
+Plugin 'godlygeek/tabular'
+
+Plugin 'mbbill/undotree'
+Plugin 'tpope/vim-repeat'
 
 call vundle#end() 
 
-set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
+"set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
 set encoding=utf-8
 set nocompatible 
 
-autocmd! bufwritepost .vimrc source %
+"autocmd! bufwritepost .vimrc source %
 autocmd! bufnewfile,bufreadpost .htaccess* set ft=apache
 
 " Editing ---------------------------------------------------------------------------------------{{{
@@ -85,16 +88,10 @@ au FileType smarty set smartindent
 " au FileType php set cinoptions=l1,c4,(s,U1,w1,m1,j1
 au FileType php set cinwords=if,elif,else,for,while,try,except,finally,def,class
 au FileType php set omnifunc=phpcomplete#CompletePHP
+
 " set showmatch                   "sm:    flashes matching brackets or
 let loaded_matchparen = 1
 
-let g:EnhCommentifyTraditionalMode = 'no'
-let g:EnhCommentifyFirstLineMode = 'yes'
-let g:EnhCommentifyUserBindings = 'no'
-let g:EnhCommentifyMultiPartBlocks = 'yes' 
-let g:EnhCommentifyUseSyntax = 'yes'
-let g:EnhCommentifyRespectIndent = 'yes'
-let g:EnhCommentifyPretty	= 'yes'
 map ,c <Plug>Traditional
 
 " FOLDING
@@ -125,13 +122,9 @@ set noswapfile                  "unk:   don't create .swp files, they're at best
 set confirm
 " toggle paste mode
 noremap ,v :set nopaste!<CR>:set nopaste?<CR>
-map ,ss :!svn stat<CR>
 "fix indenting
 map ,ri gg=G          
 map gf :vertical wincmd f<CR>
-" map ,e :w<CR>:exe ":!php " . getreg("%") . "" <CR>
-
-
 
 " -----------------------------------------------------------------------------------------------}}}
 
@@ -209,9 +202,6 @@ nnoremap <silent> b :<C-u>call PrevWordOrColumn()<CR>
 noremap  <silent> 0 ^
 noremap  <silent> ^ 0
 
-" go to last changed text
-"noremap  <silent> t `.
-
 " -----------------------------------------------------------------------------------------------}}}
 
 " Windows and Tabs ---------------------------------------------------------------------------------------{{{
@@ -228,7 +218,6 @@ nmap <C-j> :res -1<CR>
 nmap ,m :resize<CR>
 nmap ,M :resize\|:vertical resize<CR>
 nmap ,a :NERDTreeToggle<CR>
-nnoremap <silent> ,t :TlistToggle<CR>
 nmap ,s :<C-u>split scratch \| set nonumber foldcolumn=0 winfixheight<CR>
 " nmap <silent> ,p <Plug>ToggleProject
 nmap <silent> ,r :redr!<CR>
@@ -236,8 +225,6 @@ nmap <silent> ,d :bdelete<CR>
 nmap <silent> ,w :bwipeout<CR>
 nmap <silent> ,u :bunload<CR>
 nmap <silent> ,o :only<CR>
-" vmap ,g :vimgrep /expand("<cword>")/j 
-" map ,g :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw
 
 " jumping between buffers
 nnoremap <C-n> <C-w>j
@@ -246,12 +233,9 @@ nnoremap <C-p> <C-w>k
 " NERDTree
 let NERDChristmasTree=1
 
-" Project
-let g:proj_flags='T'
-
 " rotate through buffers in tabline
-noremap <silent> <F2> :<C-u>bprev<CR> 
-noremap <silent> <F3> :<C-u>bnext<CR>
+"noremap <silent> <F2> :<C-u>bprev<CR> 
+"noremap <silent> <F3> :<C-u>bnext<CR>
 
 " toggle wrapping
 " nmap <silent> ,p :set nowrap!<CR>:set nowrap?<CR>
@@ -279,10 +263,6 @@ set showtabline=1               "stal:  Display the tabbar if there are multiple
 set hidden                      "hid:   allows opening a new buffer in place of an existing one without first saving the existing one
 set equalalways                 "       allows winfixheight to work correctly
 
-" let g:Tlist_Use_Right_Window=1
-let g:Tlist_Use_SingleClick=1
-let g:Tlist_Show_One_File=1
-
 let g:showmarks_enable=0
 
 let g:proj_window_width=45
@@ -294,18 +274,14 @@ let g:proj_window_increment=55
 
 if &term == "xterm-256color" || &term == "screen"
   " use 256 colors
-  "set background=dark
   set t_Co=256
   "colorscheme jellybeans
   colorscheme Tomorrow-Night
-  " set t_Co=16
-  " set background=light
-  "set background=dark
 endif
 
 if has('gui_running')
-  colorscheme pyte
-  set guifont=Inconsolata:h16
+  colorscheme Tomorrow-Night
+  set guifont=Sauce\ Code\ Powerline:h15
 endif
 
 syntax on                       "syn:   syntax highlighting
@@ -387,23 +363,6 @@ function! Lcd(dir)
   exec('pwd')
 endfunction
 
-nmap <silent> ,dw :call Lcd('~/public_html/web')<CR>
-nmap <silent> ,ds :call Lcd('~/public_html/webservice')<CR>
-nmap <silent> ,de :call Lcd('~/public_html/email')<CR>
-nmap <silent> ,dm :call Lcd('~/public_html/api-service-messaging')<CR>
-nmap <silent> ,dc :call Lcd('~/git/common')<CR>
-nmap <silent> ,db :call Lcd('~/public_html/backyard')<CR>
-nmap <silent> ,dt :call Lcd('~/public_html/toolia')<CR>
-nmap <silent> ,dl :call Lcd('~/git/leads')<CR>
-nmap <silent> ,dp :call Lcd('~/git/push-notification')<CR>
-nmap <silent> ,dd :call Lcd('~/git/db_handle')<CR>
-
-" -----------------------------------------------------------------------------------------------}}}
-
-" Scripting --------------------------------------------------------------------------------------{{{
-
-"call log#init('ALL', ['~/.vim/vimlog.log'])
-
 " -----------------------------------------------------------------------------------------------}}}
 
 " vim: foldmethod=marker
@@ -425,20 +384,16 @@ let g:debuggerPort = 9001
 "
 
 " CTRLP
-let g:ctrlp_max_height = 20
-let g:ctrlp_max_files = 0
-let g:ctrlp_open_new_file = 'h'
+let g:ctrlp_max_height          = 20
+let g:ctrlp_max_files           = 0
+let g:ctrlp_open_new_file       = 'h'
 let g:ctrlp_open_multiple_files = 'hr'
-let g:ctrlp_working_path_mode=0
-let g:ctrlp_clear_cache_on_exit=0
-"let g:ctrlp_custom_ignore = { 'dir': '\v[\/](vendor)$', 'file': '', 'link': '', }
+let g:ctrlp_working_path_mode   = 0
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_custom_ignore       = { 'dir': '\v[\/](tests/coverage-report|vendor*test*|vendor*Test*|coverage)$', 'file': '', 'link': '', }
+let g:ctrlp_follow_symlinks     = 1
 
 map ,pd :CtrlPBookmarkDir<CR>
-
-" grep.vim
-let g:Grep_Default_Options = '-i'
-let g:Grep_Skip_Dirs = '.svn .git vendor'
-let g:Grep_Skip_Files = 'tags'
 
 imap <S-Tab> <Plug>delimitMateS-Tab
 let delimitMate_expand_cr = 1
@@ -452,7 +407,7 @@ let g:checksyntax#okrx = ''
 " sqlutilities
 let g:sqlutil_keyword_case = '\U'
 
-set tags=tags
+set tags=tags,tags.vendor
 
 " fugitive
 "
@@ -469,7 +424,6 @@ let g:agprg="/usr/local/bin/ag --column"
 
 " youcompleteme
 let g:ycm_autoclose_preview_window_after_insertion = 1
-
 "let g:ycm_key_list_select_completion=['<C-n>', '<Down>']
 "let g:ycm_key_list_previous_completion=['<C-p>', '<Up>']
 
