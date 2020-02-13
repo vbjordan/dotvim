@@ -4,37 +4,34 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Raimondi/delimitMate'
+Plugin 'chriskempson/base16-vim'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'Raimondi/delimitMate'
 "Plugin 'vim-scripts/grep.vim'
 "Plugin 'vim-scripts/Align'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-surround'
-Plugin 'rking/ag.vim'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/syntastic'
+"Plugin 'bling/vim-airline'
+"Plugin 'tpope/vim-surround'
+"Plugin 'rking/ag.vim'
 "Plugin 'spf13/vim-autoclose'
 "Plugin 'Lokaltog/vim-easymotion'
-Plugin 'avakhov/vim-yaml'
-Plugin 'chriskempson/tomorrow-theme'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'docteurklein/php-getter-setter.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'evidens/vim-twig'
-Plugin 'arnaud-lb/vim-php-namespace'
-Plugin 'godlygeek/tabular'
-
-Plugin 'mbbill/undotree'
-Plugin 'tpope/vim-repeat'
+"Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'docteurklein/php-getter-setter.vim'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+"Plugin 'godlygeek/tabular'
+"Plugin 'mbbill/undotree'
+"Plugin 'tpope/vim-repeat'
 
 call vundle#end() 
 
 "set path=path=~/bin,.,templates/,stemplates/,~/git/common/,~/public_html/web/include/,./templates,./stemplates,~/public_html/web,,
 set encoding=utf-8
 set nocompatible 
+"filetype off
 
 "autocmd! bufwritepost .vimrc source %
 autocmd! bufnewfile,bufreadpost .htaccess* set ft=apache
@@ -276,12 +273,12 @@ if &term == "xterm-256color" || &term == "screen"
   " use 256 colors
   set t_Co=256
   "colorscheme jellybeans
-  colorscheme Tomorrow-Night
+  colorscheme base16-tomorrow-night
 endif
 
 if has('gui_running')
-  colorscheme Tomorrow-Night
-  set guifont=Sauce\ Code\ Powerline:h15
+  colorscheme base16-tomorrow-night
+  set guifont=Inconsolata-Regular:h18
 endif
 
 syntax on                       "syn:   syntax highlighting
